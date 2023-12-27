@@ -86,7 +86,7 @@
                 {
                     "name": "down",
                     "id": "61b47fce-c969-4f84-bbef-d0c73c55abd6",
-                    "path": "<Keyboard>/a",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -97,7 +97,7 @@
                 {
                     "name": "left",
                     "id": "6c3371a6-495b-4fc9-b853-cb12e2df960b",
-                    "path": "<Keyboard>/s",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

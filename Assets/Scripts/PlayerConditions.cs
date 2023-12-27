@@ -19,7 +19,6 @@ public class Condition
     public float maxValue;
     public float startValue;
     public float regenRate;
-    public float decayRate;
     public Image uiBar;
 
     public void Add(float amount)
@@ -80,7 +79,7 @@ public class PlayerConditions : MonoBehaviour, IDamagable
     {
         
 
-        SceneManager.LoadScene("GameOverScene");
+        SceneManager.LoadScene("YouloseScene");
     }
 
     public void TakePhysicalDamage(int damageAmount)

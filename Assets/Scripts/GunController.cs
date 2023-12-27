@@ -77,6 +77,15 @@ public class GunController : MonoBehaviour
         {
             var clone = Instantiate(hit_effect_prefab, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
             Destroy(clone, 2f);
+
+            if (hitInfo.transform.tag == "Enemy")
+            {
+                hitInfo.transform.GetComponent<NPC>().TakePhysicalDamage(currentGun.damage);
+            }
+            else
+            {
+                return;
+            }
         }
     }
 

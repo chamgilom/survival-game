@@ -4,6 +4,9 @@ using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public enum AIState
 {
@@ -42,7 +45,8 @@ public class NPC : MonoBehaviour, IDamagable
     private float playerDistance;
 
     public float fieldOfView = 120f;
-
+    public Image uiBar;
+    private float currenthealth;
     private NavMeshAgent agent;
     private Animator animator;
     private SkinnedMeshRenderer[] meshRenderers;
@@ -52,6 +56,11 @@ public class NPC : MonoBehaviour, IDamagable
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
         meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+        currenthealth = health;
+    }
+    public float GetPercentage()
+    {
+        return currenthealth / health;
     }
 
     private void Start()
@@ -62,7 +71,7 @@ public class NPC : MonoBehaviour, IDamagable
     private void Update()
     {
         playerDistance = Vector3.Distance(transform.position, PlayerController.instance.transform.position);
-
+        uiBar.fillAmount = GetPercentage();
         animator.SetBool("Moving", aiState != AIState.Idle);
 
         switch (aiState)
@@ -226,8 +235,8 @@ public class NPC : MonoBehaviour, IDamagable
 
     public void TakePhysicalDamage(int damageAmount)
     {
-        health -= damageAmount;
-        if (health <= 0)
+        currenthealth = Mathf.Max(currenthealth - damageAmount, 0.0f);
+        if (currenthealth <= 0)
             Die();
 
         StartCoroutine(DamageFlash());
@@ -238,6 +247,7 @@ public class NPC : MonoBehaviour, IDamagable
 
 
         Destroy(gameObject);
+        SceneManager.LoadScene("YouwinScene");
     }
 
     IEnumerator DamageFlash()
