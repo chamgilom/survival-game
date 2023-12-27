@@ -8,7 +8,7 @@ public class HUD : MonoBehaviour
     [SerializeField]
     private GunController theGuncontroller;
     private Gun currentGun;
-
+ 
 
     [SerializeField]
     private Text[] text_Bullet;
