@@ -15,6 +15,13 @@ public class GunController : MonoBehaviour
 
     private bool isReload = false;
 
+    private RaycastHit hitInfo;
+    [SerializeField]
+    private Camera theCam;
+
+    [SerializeField]
+    private GameObject hit_effect_prefab;
+
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
@@ -61,6 +68,15 @@ public class GunController : MonoBehaviour
         currentGun.currentBulletCount--;
         PlaySE(currentGun.fire_Sound);
         currentGun.muzzleFlash.Play();
+        Hit();
+    }
+
+    private void Hit()
+    {
+        if (Physics.Raycast(theCam.transform.position, theCam.transform.forward, out hitInfo, currentGun.range))
+        {
+            Instantiate(hit_effect_prefab, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
+        }
     }
 
     private void GunFireRateCalc()
