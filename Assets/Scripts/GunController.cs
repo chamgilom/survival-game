@@ -13,6 +13,8 @@ public class GunController : MonoBehaviour
     private PlayerController playerController;
     private AudioSource audioSource;
 
+    private bool isReload = false;
+
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
@@ -30,7 +32,7 @@ public class GunController : MonoBehaviour
 
     public void TryFire()
     {
-        if (playerController.firetrigger == true && currentFireRate <= 0)
+        if (playerController.firetrigger == true && currentFireRate <= 0 && !isReload)
         {
             Fire();
         }
@@ -38,15 +40,27 @@ public class GunController : MonoBehaviour
 
     private void Fire()
     {
-        currentFireRate = currentGun.fireRate;
-        Shoot();
+        if (!isReload)
+        {
+        if(currentGun.currentBulletCount > 0)
+        {
+            Shoot();
+        }
+        else
+        {
+            StartCoroutine(ReloadCoroutine());
+        }
+        }
+
+
     }
 
     private void Shoot()
     {
+        currentFireRate = currentGun.fireRate;
+        currentGun.currentBulletCount--;
         PlaySE(currentGun.fire_Sound);
         currentGun.muzzleFlash.Play();
-        Debug.Log("น฿ป็");
     }
 
     private void GunFireRateCalc()
@@ -61,5 +75,35 @@ public class GunController : MonoBehaviour
     {
         audioSource.clip = _clip;
         audioSource.Play();
+    }
+
+    public IEnumerator ReloadCoroutine()
+    {
+        if(currentGun.carryBulletCount > 0)
+        {
+            isReload = true;
+            yield return new WaitForSeconds(currentGun.reloadTime);
+            currentGun.carryBulletCount += currentGun.currentBulletCount;
+            currentGun.currentBulletCount = 0;
+            if(currentGun.carryBulletCount >= currentGun.reloadBulletCount)
+            {
+                currentGun.currentBulletCount = currentGun.reloadBulletCount;
+                currentGun.carryBulletCount -= currentGun.reloadBulletCount;
+            }
+            else
+            {
+                currentGun.currentBulletCount = currentGun.carryBulletCount;
+                currentGun.carryBulletCount = 0;
+            }
+        }
+        isReload = false;
+    }
+    
+    public void TryReload()
+    {
+        if(!isReload && currentGun.currentBulletCount < currentGun.reloadBulletCount)
+        {
+            StartCoroutine(ReloadCoroutine());
+        }
     }
 }

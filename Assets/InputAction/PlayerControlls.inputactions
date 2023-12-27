@@ -51,7 +51,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Interact",
+                    "name": "Reload",
                     "type": "Button",
                     "id": "00103332-cfb9-4821-84e4-e7304be7af78",
                     "expectedControlType": "Button",
@@ -163,11 +163,11 @@
                 {
                     "name": "",
                     "id": "b7384685-c289-4b7e-8040-1fb00e22e9a1",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact",
+                    "action": "Reload",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

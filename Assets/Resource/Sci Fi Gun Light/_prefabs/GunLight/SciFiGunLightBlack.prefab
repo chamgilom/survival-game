@@ -101,14 +101,14 @@ MonoBehaviour:
   range: 100
   accuracy: 1
   fireRate: 0.2
-  reloadTime: 1
+  reloadTime: 3
   damage: 1
-  reloadBulletCount: 1
-  currentBulletCount: 1
-  maxBulletCount: 1
-  carryBulletCount: 1
-  muzzleFlash: {fileID: 0}
-  fire_Sound: {fileID: 0}
+  reloadBulletCount: 10
+  currentBulletCount: 5
+  maxBulletCount: 120
+  carryBulletCount: 30
+  muzzleFlash: {fileID: 6750863013837139827}
+  fire_Sound: {fileID: 8300000, guid: 3dc7b4438e9f788479f2eba0e75191b1, type: 3}
 --- !u!1 &75083076552460840
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,7 +157,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0

@@ -114,9 +114,17 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+    public void OnReloadInput(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+        {
+            gunController.TryReload();
+        }
+
+    }
 
 
-    private bool IsGrounded()
+            private bool IsGrounded()
     {
         Ray[] rays = new Ray[4]
         {
