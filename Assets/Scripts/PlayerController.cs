@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
     {
         instance = this;
         _rigidbody = GetComponent<Rigidbody>();
+        gunController = GetComponent<GunController>();
     }
 
     void Start()
