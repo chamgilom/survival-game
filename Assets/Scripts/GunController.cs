@@ -75,7 +75,8 @@ public class GunController : MonoBehaviour
     {
         if (Physics.Raycast(theCam.transform.position, theCam.transform.forward, out hitInfo, currentGun.range))
         {
-            Instantiate(hit_effect_prefab, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
+            var clone = Instantiate(hit_effect_prefab, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
+            Destroy(clone, 2f);
         }
     }
 
@@ -121,5 +122,10 @@ public class GunController : MonoBehaviour
         {
             StartCoroutine(ReloadCoroutine());
         }
+    }
+
+    public Gun GetGun()
+    {
+        return currentGun;
     }
 }
