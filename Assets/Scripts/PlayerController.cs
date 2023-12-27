@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    
     [Header("Movement")]
     public float moveSpeed;
     private Vector2 curMovementInput;
@@ -28,6 +29,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _rigidbody;
 
     public static PlayerController instance;
+
+    private GunController gunController;
+    public bool firetrigger = false;
+
     private void Awake()
     {
         instance = this;
@@ -96,6 +101,20 @@ public class PlayerController : MonoBehaviour
 
         }
     }
+
+    public void OnAttackInput(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+        {
+            firetrigger = true;
+        }
+        else if (context.phase == InputActionPhase.Canceled)
+        {
+            firetrigger = false;
+        }
+
+    }
+
 
     private bool IsGrounded()
     {
