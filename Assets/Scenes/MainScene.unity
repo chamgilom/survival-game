@@ -1688,7 +1688,7 @@ MonoBehaviour:
   maxWanderDistance: 10
   minWanderWaitTime: 1
   maxWanderWaitTime: 2
-  damage: 5
+  damage: 25
   attackRate: 1.5
   attackDistance: 2
   fieldOfView: 120
@@ -2123,14 +2123,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1381582412}
     m_Modifications:
-    - target: {fileID: 2025234191546848779, guid: f5b41ba4c79702547a89de7544b80656, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 4584808557392480893, guid: f5b41ba4c79702547a89de7544b80656, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
-      objectReference: {fileID: 0}
     - target: {fileID: 7292658344771522932, guid: f5b41ba4c79702547a89de7544b80656, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -2178,10 +2170,6 @@ PrefabInstance:
     - target: {fileID: 7962199819078159310, guid: f5b41ba4c79702547a89de7544b80656, type: 3}
       propertyPath: m_Name
       value: Bear_4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7962199819078159310, guid: f5b41ba4c79702547a89de7544b80656, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2365,15 +2353,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 548684292629482933, guid: a4e476a037022df448ead5d0ceea7d06, type: 3}
       propertyPath: fireRate
-      value: 0.01
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 548684292629482933, guid: a4e476a037022df448ead5d0ceea7d06, type: 3}
       propertyPath: reloadTime
-      value: 1
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 548684292629482933, guid: a4e476a037022df448ead5d0ceea7d06, type: 3}
+      propertyPath: maxBulletCount
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 548684292629482933, guid: a4e476a037022df448ead5d0ceea7d06, type: 3}
       propertyPath: carryBulletCount
-      value: 120
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 548684292629482933, guid: a4e476a037022df448ead5d0ceea7d06, type: 3}
       propertyPath: reloadBulletCount
@@ -2381,7 +2373,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 548684292629482933, guid: a4e476a037022df448ead5d0ceea7d06, type: 3}
       propertyPath: currentBulletCount
-      value: 1000
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6750863013837139827, guid: a4e476a037022df448ead5d0ceea7d06, type: 3}
       propertyPath: playOnAwake
