@@ -1,4 +1,4 @@
-# SURVIVAL GAME
+# SURVIVAL GAME 김형진
 
 이 게임은 총을 쏴서 곰을 죽이는게 목적인 게임이다
 
